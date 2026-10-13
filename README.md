@@ -2,6 +2,10 @@
 
 A timed multiple-choice German vocabulary game that runs entirely in the browser — no build step, no dependencies.
 
+## Attribution
+
+This project was directed by **Kpax** ([kpax2049](https://github.com/kpax2049)); the implementation and commits were carried out by Hermes Agent on his behalf.
+
 ## Gameplay
 
 - Pick a difficulty (Easy 15 s / Medium 12 s / Hard 10 s per question) and press **Start**.
