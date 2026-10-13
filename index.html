@@ -13,11 +13,18 @@
 
     <section id="start">
       <p class="tagline">Translate English words into German. Ten questions — how sharp is your vocabulary?</p>
+      <label for="difficulty">Difficulty</label>
+      <select id="difficulty" class="select">
+        <option value="easy">Easy (15 s)</option>
+        <option value="medium" selected>Medium (12 s)</option>
+        <option value="hard">Hard (10 s)</option>
+      </select>
       <button id="start-btn" class="btn primary">Start</button>
     </section>
 
     <section id="quiz" hidden>
       <div id="progress" class="status"></div>
+      <div class="status"><span id="timer"></span> · <span id="streak"></span></div>
       <p id="prompt" class="prompt"></p>
       <div id="choices" class="choices"></div>
       <p id="feedback" role="status" aria-live="polite" class="feedback"></p>
@@ -26,6 +33,7 @@
     <section id="results" hidden>
       <h2>Round complete</h2>
       <p id="score" class="score"></p>
+      <p id="best-streak" class="score"></p>
       <button id="restart-btn" class="btn primary">Play again</button>
     </section>
   </main>

@@ -46,6 +46,18 @@ h1 { margin: 0 0 0.5rem; }
 
 .choice:disabled { opacity: 0.6; }
 
+.select {
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid #3a3f4a;
+  background: var(--panel);
+  color: var(--text);
+  font-size: 1rem;
+  margin: 0.5rem 0.75rem;
+}
+
+#timer.low { color: var(--accent); font-weight: 600; }
+
 .status { color: #9aa0ac; margin-bottom: 1rem; }
 
 .prompt { font-size: 1.5rem; font-weight: 600; margin: 0 0 1rem; }
