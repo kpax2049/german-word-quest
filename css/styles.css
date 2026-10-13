@@ -2,8 +2,12 @@
   --bg: #14161a;
   --panel: #1d2026;
   --text: #e8eaf0;
-  --accent: #d4212c;
-  --ok: #2e7d32;
+  --muted: #9aa0ac;
+  --accent: #e05a63;   /* brightened: 4.6:1 on bg (was #d4212c, 3.5:1) */
+  --ok: #4caf50;       /* brightened: 4.6:1 on bg (was #2e7d32, 3.5:1) */
+  --focus: #7fb3ff;
+  --accent-fill: #b03038;  /* dark fill variants so white text on buttons passes AA */
+  --ok-fill: #2e7d32;      /* (bright --accent/--ok stay for text/borders on bg) */
   --radius: 10px;
 }
 
@@ -15,6 +19,7 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
 }
@@ -22,10 +27,11 @@ body {
 main {
   width: min(560px, 100% - 2rem);
   padding: 2rem 1rem;
+  padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
 h1 { margin: 0 0 0.5rem; }
-.tagline { color: #9aa0ac; }
+.tagline { color: var(--muted); }
 
 .btn {
   display: inline-block;
@@ -36,14 +42,29 @@ h1 { margin: 0 0 0.5rem; }
   cursor: pointer;
   background: var(--panel);
   color: var(--text);
+  -webkit-tap-highlight-color: transparent;
 }
 
-.btn.primary { background: var(--accent); color: #fff; }
+.btn.primary { background: var(--accent-fill); color: #fff; }
+
+/* Visible keyboard focus ring on all controls. */
+.btn:focus-visible,
+.select:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
 
 .choices { display: grid; gap: 0.5rem; }
 
-.choice { width: 100%; text-align: left; }
+.choice {
+  width: 100%;
+  text-align: left;
+  min-height: 44px;            /* touch target */
+  font-size: 1.05rem;
+}
 
+.choice.correct { background: var(--ok-fill); color: #fff; }
+.choice.wrong { border: 2px solid var(--accent); }
 .choice:disabled { opacity: 0.6; }
 
 .select {
@@ -58,10 +79,23 @@ h1 { margin: 0 0 0.5rem; }
 
 #timer.low { color: var(--accent); font-weight: 600; }
 
-.status { color: #9aa0ac; margin-bottom: 1rem; }
+.status { color: var(--muted); margin-bottom: 1rem; }
 
-.prompt { font-size: 1.5rem; font-weight: 600; margin: 0 0 1rem; }
+.prompt { font-size: 1.5rem; font-weight: 600; margin: 0 0 1rem; overflow-wrap: break-word; }
 
-.feedback { min-height: 1.25rem; }
+.feedback { min-height: 1.25rem; font-weight: 600; overflow-wrap: break-word; }
 
 .score { font-size: 1.25rem; }
+
+/* Mobile: single-column, thumb-friendly sizing. */
+@media (max-width: 480px) {
+  main { padding: 1rem 0.75rem; }
+  h1 { font-size: 1.35rem; }
+  .prompt { font-size: 1.25rem; }
+  .btn, .select { font-size: 1.05rem; }
+  .choice { min-height: 48px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
