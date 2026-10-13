@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="German Word Quest — a timed multiple-choice German vocabulary game that runs entirely in the browser.">
+  <title>German Word Quest</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main id="app">
+    <h1>German Word Quest</h1>
+
+    <section id="start">
+      <p class="tagline">Translate English words into German. Ten questions — how sharp is your vocabulary?</p>
+      <button id="start-btn" class="btn primary">Start</button>
+    </section>
+
+    <section id="quiz" hidden>
+      <div id="progress" class="status"></div>
+      <p id="prompt" class="prompt"></p>
+      <div id="choices" class="choices"></div>
+      <p id="feedback" role="status" aria-live="polite" class="feedback"></p>
+    </section>
+
+    <section id="results" hidden>
+      <h2>Round complete</h2>
+      <p id="score" class="score"></p>
+      <button id="restart-btn" class="btn primary">Play again</button>
+    </section>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
